@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Agente</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, textarea {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .response {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-height: 100px;
+            background-color: #f9f9f9;
+            overflow-wrap: break-word;
+        }
+
+        .response pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .response code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        .response blockquote {
+            border-left: 3px solid #ccc;
+            padding-left: 10px;
+            margin-left: 0;
+            color: #666;
+        }
+
+        .loading {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="form-group">
+        <label for="agent-id">ID do Agente:</label>
+        <input type="number" id="agent-id">
+    </div>
+
+    <div class="form-group">
+        <label for="session-id">ID da Sessão:</label>
+        <input type="text" id="session-id">
+    </div>
+
+    <div class="form-group">
+        <label for="message">Mensagem:</label>
+        <textarea id="message"></textarea>
+    </div>
+
+    <button id="send-button">Enviar</button>
+
+    <div class="loading" id="loading">Processando...</div>
+    <div class="error" id="error"></div>
+
+    <h2>Resposta:</h2>
+    <div class="response" id="response"></div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const sendButton = document.getElementById('send-button');
+        const agentIdInput = document.getElementById('agent-id');
+        const sessionIdInput = document.getElementById('session-id');
+        const messageInput = document.getElementById('message');
+        const responseDiv = document.getElementById('response');
+        const loadingDiv = document.getElementById('loading');
+        const errorDiv = document.getElementById('error');
+
+        sendButton.addEventListener('click', async function () {
+            loadingDiv.style.display = 'block';
+            responseDiv.textContent = '';
+            errorDiv.style.display = 'none';
+
+            try {
+                const agentId = agentIdInput.value;
+                const requestData = {
+                    message: messageInput.value,
+                    session_id: sessionIdInput.value
+                };
+
+                const response = await fetch(`/agents/${agentId}/usar`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Erro ${response.status}: ${await response.text()}`);
+                }
+
+                const json_response = await response.json();
+
+                if (json_response) {
+                    responseDiv.innerHTML = marked.parse(json_response.content);
+                } else {
+                    responseDiv.textContent = 'Nenhuma resposta recebida.';
+                }
+            } catch (error) {
+                errorDiv.textContent = `Erro: ${error.message}`;
+                errorDiv.style.display = 'block';
+            } finally {
+                loadingDiv.style.display = 'none';
+            }
+        });
+    });
+</script>
+</body>
+</html>

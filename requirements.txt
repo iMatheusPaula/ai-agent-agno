@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+agno
+python-dotenv
+openai
+pgvector
+pypdf
+pymongo
+requests
+google-genai
+packaging
+sqlalchemy
+psycopg[binary]
+pycryptodome

@@ -1,0 +1,112 @@
+{
+  "cardapio_espetinhos": [
+    {
+      "nome": "Carne",
+      "preco": 40.00,
+      "quantidade": 10,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Coração",
+      "preco": 19.00,
+      "quantidade": 5,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Costela",
+      "preco": 22.00,
+      "quantidade": 5,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Cupim na Bodinha",
+      "preco": 25.00,
+      "quantidade": 5,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Cupim na Mostarda",
+      "preco": 25.00,
+      "quantidade": 5,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Frango",
+      "preco": 17.50,
+      "quantidade": 5,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Kafta",
+      "preco": 17.50,
+      "quantidade": 5,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Linguiça Apimentada",
+      "preco": 19.00,
+      "quantidade": 5,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Linguiça Cuiabana",
+      "preco": 19.00,
+      "quantidade": 5,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Linguiça de Costela",
+      "preco": 19.00,
+      "quantidade": 5,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Medalhão de Carne",
+      "preco": 26.50,
+      "quantidade": 5,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Medalhão de Frango",
+      "preco": 26.50,
+      "quantidade": 5,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Medalhão de Queijo",
+      "preco": 35.00,
+      "quantidade": 5,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Panceta",
+      "preco": 20.00,
+      "quantidade": 5,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Pão de Alho",
+      "preco": 15.00,
+      "quantidade": 5,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Queijo Coalho",
+      "preco": 35.00,
+      "quantidade": 7,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Queijo Nozinho",
+      "preco": 27.50,
+      "quantidade": 5,
+      "unidade": "unidades"
+    },
+    {
+      "nome": "Tulipa de Frango",
+      "preco": 17.50,
+      "quantidade": 5,
+      "unidade": "unidades"
+    }
+  ]
+}

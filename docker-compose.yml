@@ -60,7 +60,7 @@ services:
       - "5432"
 
   code-chat:
-    image: codechat/api:v1.3.4
+    image: codechat/api:v1.3.6
     restart: unless-stopped
     ports:
       - 8084:8084
